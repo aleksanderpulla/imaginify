@@ -57,7 +57,7 @@ const TransformedImage = ({
           {isTransforming && (
             <div className="transforming-loader">
               <Image
-                src="/assets/icons.spinner.svg"
+                src="/assets/icons/spinner.svg"
                 alt="Transforming"
                 width={50}
                 height={50}
