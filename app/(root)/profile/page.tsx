@@ -50,13 +50,13 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
         </div>
       </section>
 
-      <section className="mt-8 md:mt-14">
+      {/* <section className="mt-8 md:mt-14">
         <Collection
           images={images?.data}
           totalPages={images?.totalPages}
           page={page}
         />
-      </section>
+      </section> */}
     </>
   );
 };

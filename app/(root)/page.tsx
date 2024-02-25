@@ -1,15 +1,23 @@
 import { Collection } from "@/components/shared/Collection";
 import { navLinks } from "@/constants";
-import { getAllImages } from "@/lib/actions/image.actions";
+import { getAllImages, getUserImages } from "@/lib/actions/image.actions";
+import { getUserById } from "@/lib/actions/user.actions";
+import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const Home = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1;
-  const searchQuery = (searchParams?.query as string) || "";
 
-  const images = await getAllImages({ page, searchQuery });
+  const { userId } = auth();
+
+  if (!userId) redirect("/sign-in");
+
+  const user = await getUserById(userId);
+
+  const images = await getUserImages({ page, userId: user._id });
 
   return (
     <>
@@ -37,7 +45,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         <Collection
           hasSearch={true}
           images={images?.data}
-          totalPages={images?.totalPage}
+          totalPages={images?.totalPages}
           page={page}
         />
       </section>
