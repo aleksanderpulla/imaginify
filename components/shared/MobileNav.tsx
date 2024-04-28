@@ -13,12 +13,7 @@ const MobileNav = () => {
   return (
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
-        <Image
-          src="/assets/images/logo-text.svg"
-          alt="logo"
-          width={180}
-          height={28}
-        />
+        <Image src="/logo.png" alt="logo" width={130} height={20} />
       </Link>
 
       <nav className="flex gap-2">
@@ -36,12 +31,7 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent side="left" className="sheet-content sm:w-64">
               <>
-                <Image
-                  src="/assets/images/logo-text.svg"
-                  alt="logo"
-                  width={152}
-                  height={23}
-                />
+                <Image src="/logo.png" alt="logo" width={130} height={23} />
                 <ul className="header-nav_elements">
                   {navLinks.map((link) => {
                     const isActive = link.route === pathname;
